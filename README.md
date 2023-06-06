@@ -4,6 +4,14 @@
 
 <br />
 
+## Notes to reviewer
+
+- The endpoint provided by you didn't alwasy work so I used an alternative.
+- I decided to use Etherscan, which is rate delimited, for both API calls because it introduced an interesting problem to solve. There would be no delay if I used another service for one of the calls.
+- I'm aware the USD prices don't look quite right but I ran out of time
+
+<br />
+
 ## Installation
 
 ```bash
