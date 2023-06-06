@@ -1,3 +1,9 @@
+export type ResponseData = {
+	status: string;
+	message: string;
+	result: Record<string, unknown>;
+};
+
 export type GasData = {
 	status: string;
 	message: string;
