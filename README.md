@@ -1,53 +1,115 @@
-# Ethereum gas checker exercise
+# React Webpack Typescript (RWT)
 
-## TL;DR
+React Webpack Typescript Boilerplate with custom webpack configurations for hot reloading.
 
-Create a frontend webapp that displays the latest Ethereum gas prices.
+A minimal secure boilerplate for writing Web Applications using [React](https://reactjs.org/), [Webpack](https://webpack.js.org/) & [TypeScript](https://www.typescriptlang.org/). <br /> This project makes use of latest packages and configurations to serve the best environment for development.
 
-## The long version
+<br>
 
-### What's the purpose of this exercise?
+## Screenshot
 
-This exercise is meant as a fun way for you to demonstrate your frontend skills and apply core Crypto concepts. Perhaps the above TL;DR didn't mean much to you? That's OK! Or you may already be quite familiar with the Web3 world? Regardless, Google is your friend. If you have no experience with blockchain or Ethereum all the better! Always good to learn something new, eh?
+<img src="assets/images/screenshot.png" />
 
-### What is Ethereum?
+<br>
 
-Ethereum is a globally shared cloud service where anyone can deploy code (these pieces of code are called _smart contracts_) and anyone can call the methods of this code (calling a method that writes data to persistent state is called _executing a transaction_). One of the popular applications of this technology is to write code that deals with decentralized money - money that is fully democratic and transparent and isn't being controlled by a small minority.
+## Core Features
 
-A popular web-based explorer that lets you query the Ethereum network, the smart contracts on it and their state is [etherscan.io](https://etherscan.io). Don't be afraid to Google to learn more, but be careful not to drown yourself in information.
+- ⚛️ React
+- 🌀 TypeScript
+- 🥗 SASS/SCSS Loader
+- 🛶 LESS Loader (optional)
+- 🎨 CSS Loader
+- 📸 Image Loader
+- 🆎 Font Loader
+- 🧹 ESLint
+- 🔱 Webpack & Configuration
+- 🧩 Aliases for Project Paths
+- 🔥 React Fast Refresh + Webpack HMR
+- 🌞 Dark Mode + Light Mode (Theme)
 
-### And what is gas?
+<br />
 
-Remember us mentioning that writing data to persistent state in a smart contract is called _executing a transaction_? Well, the Ethereum network requires gas to execute these transactions. When you send [ERC20 tokens](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/), interact with a contract, send ETH or do anything else on the blockchain, you must pay for that computation. That payment is calculated in gas, and gas is always paid in ETH. The more complicated the transaction, the more units of gas you'll have to pay for.
+## Installation
 
-### Does the price of gas rise and fall?
+#### To install this boilerplate you need to run following commands
 
-Yep, the price of gas is dynamic and is essentially a product of demand: the more people that are trying to get their transactions processed by the network, the higher it will be. You do have the option of paying an additional fee to get your transaction processed more quickly, but it can get costly quickly.
+<br>
 
-So now you understand why everyone working with the Ethererum blockchain watches the price of gas so closely - it underpins everything that happens on the network!
+Clone the repository :
 
-### How can I query the current gas prices?
+```bash
+git clone https://github.com/codesbiome/react-webpack-typescript-2022
+```
 
-We have provided an endpoint that lists the current gas prices for standard and priority transaction processing. Check it out here - https://api.ethgasstation.info/api/fee-estimate.
+<br>
 
-You may want to read up on [the different denominations of Ether](https://ethereum.org/en/developers/docs/intro-to-ether/#denominations) as these prices are in _gwei_.
+Install dependencies using Yarn or NPM or PNPM :
 
-### Cool, so what exactly do I need to build?
+```bash
+# using pnpm
+pnpm install
 
-We mentioned earlier [Etherscan](https://etherscan.io) - probably the most popular Ethereum blockchain explorer. Etherscan has [a nifty gas tracker page](https://etherscan.io/gastracker). **We'd like you to build your own gas tracker app**.
+# or using yarn
+yarn install
 
-We're not expecting you to spend more than a few hours on this project, so we're not wanting perfection or for your app to be particularly fully featured. We also want you to have some fun doing this, so feel free to apply your own take on Etherscan's implementation, or go off on a tangent if inspiration strikes!
+# or using npm
+npm install
+```
 
-At Orbs, you can expect to be very involved in product decisions as well as technical, so we like people that can think independently and way up the tradeoffs of an implentation accordingly!
+<br />
 
-There are some things we'd definitely like to see:
+## Start : Development
 
-- **The latest gas prices for low, standard and high-priority processing**, with the price displayed in gwei and dollars ($).
-- **A modern frontend UI framework (React, Vue, Svelte, etc) and TypeScript are a must. Everything else is up to you!** We believe in using the right tool for the job!
-- **An attractive UI and good UX**.
-- **Mobile-first design**: it should work for mobile devices, desktops and in-between.
-- **Frequent commits**: we like to see how you think and the approach you took to arrive at a solution.
+To develop and run your web application, you need to run following command :
 
-### I have questions!
+```bash
+yarn start
+```
 
-We hope that _everything is unclear_ and you have a million questions. Google is your friend, good luck!
+<br />
+
+## Lint : Development
+
+To lint application source code using ESLint via this command :
+
+```bash
+yarn lint
+```
+
+<br />
+
+## Build : Production
+
+Distribution files output will be generated in `dist/` directory by default.
+
+To build the production ready files for distribution, use the following command :
+
+```bash
+yarn build
+```
+
+<br />
+
+## Serve : Production
+
+Serve helps you serve a static site, single page application or just a static file. It also provides a neat interface for listing the directory's contents. This command serves build files from `dist/` directory.
+
+```bash
+yarn serve
+```
+
+<br />
+
+## Webpack Configurations
+
+To make it easier for managing environment based webpack configurations, we using separated `development` and `production` configuration files, they are available in :
+
+```bash
+# Development webpack config
+tools/webpack/webpack.config.dev.js
+
+# Production webpack config
+tools/webpack/webpack.config.prod.js
+```
+
+For further information, you can visit [Webpack Configuration](https://webpack.js.org/configuration/)
