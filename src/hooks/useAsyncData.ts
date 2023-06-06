@@ -11,13 +11,9 @@ export function useAsyncData<D>(
 		setLoading(true);
 		setError(null);
 		method()
-			.then((newData) => {
-				newData && setData(newData);
-				setLoading(false);
-			})
-			.catch((err) => {
-				setError(err);
-			});
+			.then((newData) => newData && setData(newData))
+			.catch((err) => setError(err))
+			.finally(() => setLoading(false));
 	}, [method]);
 
 	return [data, loading, error];
