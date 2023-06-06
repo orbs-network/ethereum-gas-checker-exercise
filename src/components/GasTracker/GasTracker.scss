@@ -9,8 +9,10 @@
 		margin: 0;
 	}
 
-	// &__status {
-	// }
+	&__status {
+		display: flex;
+		justify-content: space-between;
+	}
 
 	&__cards {
 		display: flex;

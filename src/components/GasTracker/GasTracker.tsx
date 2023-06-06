@@ -9,12 +9,22 @@ import { Stack } from "@src/components/Stack";
 import "./GasTracker.scss";
 import { GasFeeCard } from "./GasFeeCard";
 
+const formatDate = (date: Date) =>
+	date.getHours() + ":" + date.getMinutes() + ", " + date.toDateString();
+
+const copy = {
+	error: "An error has occured",
+	loadingDat: "Loading data...",
+	loadingRate: "Loadig USD rate...",
+};
+
 export const GasTracker: React.FC = () => {
 	const [gasData, gasLoading, gasError] = useAsyncData<GasData>(getGasData);
 	const [priceData, priceLoading, priceError] = useAsyncData<PriceData>(getPriceData); // prettier-ignore
 
 	const convertGweiToUsd = useCallback(
 		(gwei: number | string) => {
+			console.log({ gasData, priceData });
 			if (!priceData) return null;
 			const ethUsdRate = Number(priceData.result.ethusd);
 			const eth = convertGweiToEth(Number(gwei));
@@ -24,16 +34,23 @@ export const GasTracker: React.FC = () => {
 	);
 
 	const { SafeGasPrice, ProposeGasPrice, FastGasPrice } = gasData?.result ?? {};
+	const { ethusd_timestamp: timestamp } = priceData?.result ?? {};
 
-	const statusProps = { gasLoading, gasError, priceLoading, priceError };
+	const dateString = timestamp && formatDate(new Date(Number(timestamp)));
 
-	const cardProps = { getUsd: convertGweiToUsd, usdRateLoading: priceLoading };
+	const cardProps = { usdRateLoading: priceLoading, getUsd: convertGweiToUsd };
 
 	return (
 		<Stack className="GasTracker" gap={2}>
-			<p className="GasTracker__status">
-				{JSON.stringify(statusProps, null, 2)}
-			</p>
+			<div className="GasTracker__status">
+				{gasError || priceError
+					? copy["error"]
+					: gasLoading
+					? copy["loadingDat"]
+					: priceLoading
+					? copy["loadingRate"]
+					: dateString}
+			</div>
 
 			<Stack className="GasTracker__cards" gap={1}>
 				<GasFeeCard label="low" priceGwei={SafeGasPrice} {...cardProps} />
