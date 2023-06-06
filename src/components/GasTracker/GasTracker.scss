@@ -1,0 +1,25 @@
+@import "@src/styles/Theme.scss";
+
+.GasTracker {
+	padding: 2rem;
+	box-shadow: 0 0 1px black;
+	border-radius: 0.5rem;
+
+	& > * {
+		margin: 0;
+	}
+
+	// &__status {
+	// }
+
+	&__cards {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		@media (min-width: 576px) {
+			flex-direction: row !important;
+			justify-content: center;
+		}
+	}
+}

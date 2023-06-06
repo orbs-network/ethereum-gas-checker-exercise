@@ -14,3 +14,28 @@ body {
 	background: var(--color-bg-main);
 	line-height: 1.5;
 }
+
+.App {
+	min-height: 100vh;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	align-items: center;
+
+	header {
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+
+	main {
+		flex: 1;
+	}
+
+	footer {
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+
+	&__title {
+		font-size: 2rem;
+	}
+}

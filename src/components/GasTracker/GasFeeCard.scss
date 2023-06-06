@@ -1,0 +1,23 @@
+@import "@src/styles/Theme.scss";
+
+.GasFeeCard {
+	width: 6rem;
+	padding: 1rem;
+	align-items: center;
+	box-shadow: 0 0 1px black;
+	border-radius: 0.5rem;
+
+	& > * {
+		margin: 0;
+	}
+
+	&__label {
+		text-transform: capitalize;
+	}
+
+	// &__gwei {
+	// }
+
+	// &__usd {
+	// }
+}
