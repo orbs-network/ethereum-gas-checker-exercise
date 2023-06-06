@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 
-import type { GasData, PriceData } from "@src/services/etherscan";
-import { getGasData, getPriceData } from "@src/services/etherscan";
+import type { GasPriceData, EthRateData } from "@src/services/etherscan";
+import { fetchGasPrice, fetchRate } from "@src/services/etherscan";
 import { useAsyncData } from "@src/hooks/useAsyncData";
 import { convertGweiToEth } from "@src/utils/currency";
 import { Stack } from "@src/components/Stack";
@@ -20,20 +20,20 @@ const copy = {
 };
 
 export const GasTracker: React.FC = () => {
-	const gasMeta = useAsyncData<GasData>(getGasData);
-	const priceMeta = useAsyncData<PriceData>(getPriceData);
+	const gasPriceMeta = useAsyncData<GasPriceData>(fetchGasPrice);
+	const ethRateMeta = useAsyncData<EthRateData>(fetchRate);
 
-	const [gasData, gasLoading, gasError, gasRefresh] = gasMeta;
-	const [priceData, priceLoading, priceError, priceRefresh] = priceMeta;
+	const [gasPriceData, gasLoading, gasError, gasRefresh] = gasPriceMeta;
+	const [ethRateData, priceLoading, priceError, priceRefresh] = ethRateMeta;
 
 	const convertGweiToUsd = useCallback(
 		(gwei: number | string) => {
-			if (!priceData) return null;
-			const ethUsdRate = Number(priceData.result.ethusd);
+			if (!ethRateData) return null;
+			const ethUsdRate = Number(ethRateData.result.ethusd);
 			const eth = convertGweiToEth(Number(gwei));
 			return eth * ethUsdRate;
 		},
-		[priceData]
+		[ethRateData]
 	);
 
 	const refresh = () => {
@@ -41,8 +41,9 @@ export const GasTracker: React.FC = () => {
 		priceRefresh();
 	};
 
-	const { SafeGasPrice, ProposeGasPrice, FastGasPrice } = gasData?.result ?? {};
-	const { ethusd_timestamp: timestamp } = priceData?.result ?? {};
+	const { SafeGasPrice, ProposeGasPrice, FastGasPrice } =	gasPriceData?.result ?? {}; // prettier-ignore
+	const { ethusd_timestamp: timestamp } = ethRateData?.result ?? {};
+
 	const dateString = timestamp && formatDate(new Date(Number(timestamp)));
 
 	const cardProps = { usdRateLoading: priceLoading, getUsd: convertGweiToUsd };

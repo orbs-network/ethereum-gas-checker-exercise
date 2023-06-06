@@ -4,7 +4,7 @@ export type ResponseData = {
 	result: Record<string, unknown>;
 };
 
-export type GasData = {
+export type GasPriceData = {
 	status: string;
 	message: string;
 	result: {
@@ -17,7 +17,7 @@ export type GasData = {
 	};
 };
 
-export type PriceData = {
+export type EthRateData = {
 	status: string;
 	message: string;
 	result: {

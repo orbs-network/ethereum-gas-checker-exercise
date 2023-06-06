@@ -1,7 +1,7 @@
-import type { GasData, PriceData } from "@src/services/etherscan";
+import type { GasPriceData, EthRateData } from "@src/services/etherscan";
 import { EtherscanServiceInstance } from "./service";
 
-export const getGasData = async (): Promise<GasData | void> => {
+export const fetchGasPrice = async (): Promise<GasPriceData | void> => {
 	const params = {
 		module: "gastracker",
 		action: "gasoracle",
@@ -9,7 +9,7 @@ export const getGasData = async (): Promise<GasData | void> => {
 	return EtherscanServiceInstance.getRequest("", { params });
 };
 
-export const getPriceData = async (): Promise<PriceData | void> => {
+export const fetchRate = async (): Promise<EthRateData | void> => {
 	const params = {
 		module: "stats",
 		action: "ethprice",
