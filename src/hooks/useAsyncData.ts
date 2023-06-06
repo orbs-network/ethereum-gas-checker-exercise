@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function useAsyncData<D>(method: () => Promise<D>): D {
+export function useAsyncData<D>(method: () => Promise<D | void>): D {
 	const [data, setData] = useState<D>();
 
 	useEffect(() => {

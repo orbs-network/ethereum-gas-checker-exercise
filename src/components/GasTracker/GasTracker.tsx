@@ -1,11 +1,8 @@
 import React from "react";
 
-import { getGasData } from "@src/services/etherscan/gastracker";
-import { getPriceData } from "@src/services/etherscan/ethprice";
+import type { GasData, PriceData } from "@src/services/etherscan";
+import { getGasData, getPriceData } from "@src/services/etherscan";
 import { useAsyncData } from "@src/hooks/useAsyncData";
-
-type GasData = Awaited<ReturnType<typeof getGasData>>;
-type PriceData = Awaited<ReturnType<typeof getPriceData>>;
 
 export const GasTracker: React.FC = () => {
 	const gasData = useAsyncData<GasData>(getGasData);
