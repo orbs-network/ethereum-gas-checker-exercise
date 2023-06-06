@@ -16,9 +16,7 @@ export const App: React.FC = () => {
 				<GasTracker />
 			</main>
 
-			<footer>
-				<p>by Sebastian Rosloniec</p>
-			</footer>
+			<footer className="App__footer">by Sebastian Rosloniec</footer>
 		</Stack>
 	);
 };

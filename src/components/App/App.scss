@@ -21,16 +21,16 @@ body {
 	padding-right: 2rem;
 	align-items: center;
 
-	header {
+	&__header {
 		padding-top: 1rem;
 		padding-bottom: 1rem;
 	}
 
-	main {
+	&__main {
 		flex: 1;
 	}
 
-	footer {
+	&__footer {
 		padding-top: 1rem;
 		padding-bottom: 1rem;
 	}
