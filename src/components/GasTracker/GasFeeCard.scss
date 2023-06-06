@@ -1,11 +1,10 @@
-@import "@src/styles/Theme.scss";
-
 .GasFeeCard {
 	width: 6rem;
 	padding: 1rem;
 	align-items: center;
-	box-shadow: 0 0 1px black;
+	box-shadow: var(--shadow-1);
 	border-radius: 0.5rem;
+	background: var(--bg-card);
 
 	&__label {
 		font-size: 0.9rem;
@@ -24,7 +23,7 @@
 	}
 
 	&__usd {
-		color: rgb(66, 66, 66);
+		color: var(--color-secondary);
 		font-size: 0.8rem;
 		margin-top: 0.2rem;
 	}
