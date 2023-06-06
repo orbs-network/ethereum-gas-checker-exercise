@@ -1,7 +1,10 @@
 @import "@src/styles/Theme.scss";
 
 .GasTracker {
-	padding: 2rem;
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
 	box-shadow: 0 0 1px black;
 	border-radius: 0.5rem;
 
@@ -12,6 +15,7 @@
 	&__status {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 	}
 
 	&__cards {

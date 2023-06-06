@@ -5,6 +5,7 @@ import { getGasData, getPriceData } from "@src/services/etherscan";
 import { useAsyncData } from "@src/hooks/useAsyncData";
 import { convertGweiToEth } from "@src/utils/currency";
 import { Stack } from "@src/components/Stack";
+import { Button } from "@src/components/Button";
 
 import "./GasTracker.scss";
 import { GasFeeCard } from "./GasFeeCard";
@@ -58,7 +59,7 @@ export const GasTracker: React.FC = () => {
 						? copy["loadingRate"]
 						: dateString}
 				</div>
-				<button onClick={refresh}>Refresh</button>
+				<Button onClick={refresh}>Refresh</Button>
 			</div>
 
 			<Stack className="GasTracker__cards" gap={1}>
