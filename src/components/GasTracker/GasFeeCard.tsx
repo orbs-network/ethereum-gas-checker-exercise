@@ -11,7 +11,7 @@ type Props = {
 	usdRateLoading: boolean;
 };
 
-const formatUsd = (usd: number) => Math.round(usd * 100) / 100;
+const formatUsd = (usd: number) => usd.toFixed(2);
 
 export const GasFeeCard: React.FC<Props> = ({
 	label,
@@ -19,13 +19,14 @@ export const GasFeeCard: React.FC<Props> = ({
 	getUsd,
 	usdRateLoading,
 }) => {
-	const priceUsd = formatUsd(getUsd(priceGwei));
+	const priceUsd = !usdRateLoading && formatUsd(getUsd(priceGwei));
 
 	return (
 		<Stack className="GasFeeCard" gap={1}>
 			<h4 className="GasFeeCard__label">{label}</h4>
-			<p className="GasFeeCard__gwei">{priceGwei} gwei</p>
-			<p className="GasFeeCard__usd">{usdRateLoading ? "..." : priceUsd} USD</p>
+			<hr className="GasFeeCard__separator" />
+			<p className="GasFeeCard__gwei">{priceGwei ?? "..."} gwei</p>
+			<p className="GasFeeCard__usd">{priceUsd || "..."} USD</p>
 		</Stack>
 	);
 };
