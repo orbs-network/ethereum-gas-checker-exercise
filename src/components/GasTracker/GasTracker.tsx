@@ -48,9 +48,9 @@ export const GasTracker: React.FC = () => {
 	const cardProps = { usdRateLoading: priceLoading, getUsd: convertGweiToUsd };
 
 	return (
-		<Stack className="GasTracker" gap={1.5}>
-			<div className="GasTracker__status">
-				<div>
+		<Stack as="section" className="GasTracker" gap={1.5}>
+			<Stack as="header" className="GasTracker__header" gap={1}>
+				<div className="GasTracker__status">
 					{gasError || priceError
 						? copy["error"]
 						: gasLoading
@@ -60,7 +60,7 @@ export const GasTracker: React.FC = () => {
 						: dateString}
 				</div>
 				<Button onClick={refresh}>Refresh</Button>
-			</div>
+			</Stack>
 
 			<Stack className="GasTracker__cards" gap={1}>
 				<GasFeeCard label="low" priceGwei={SafeGasPrice} {...cardProps} />
