@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 export function useAsyncData<D>(
 	method: () => Promise<D | void>
-): [data: D, loading: boolean, error: string | null] {
+): [data: D, loading: boolean, error: string | null, refresh: () => void] {
 	const [data, setData] = useState<D>();
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
 
-	useEffect(() => {
+	const fetchData = useCallback(() => {
 		setLoading(true);
 		setError(null);
 		method()
@@ -16,5 +16,7 @@ export function useAsyncData<D>(
 			.finally(() => setLoading(false));
 	}, [method]);
 
-	return [data, loading, error];
+	useEffect(fetchData, [fetchData]);
+
+	return [data, loading, error, fetchData];
 }

@@ -19,12 +19,14 @@ const copy = {
 };
 
 export const GasTracker: React.FC = () => {
-	const [gasData, gasLoading, gasError] = useAsyncData<GasData>(getGasData);
-	const [priceData, priceLoading, priceError] = useAsyncData<PriceData>(getPriceData); // prettier-ignore
+	const gasMeta = useAsyncData<GasData>(getGasData);
+	const priceMeta = useAsyncData<PriceData>(getPriceData);
+
+	const [gasData, gasLoading, gasError, gasRefresh] = gasMeta;
+	const [priceData, priceLoading, priceError, priceRefresh] = priceMeta;
 
 	const convertGweiToUsd = useCallback(
 		(gwei: number | string) => {
-			console.log({ gasData, priceData });
 			if (!priceData) return null;
 			const ethUsdRate = Number(priceData.result.ethusd);
 			const eth = convertGweiToEth(Number(gwei));
@@ -33,23 +35,30 @@ export const GasTracker: React.FC = () => {
 		[priceData]
 	);
 
+	const refresh = () => {
+		gasRefresh();
+		priceRefresh();
+	};
+
 	const { SafeGasPrice, ProposeGasPrice, FastGasPrice } = gasData?.result ?? {};
 	const { ethusd_timestamp: timestamp } = priceData?.result ?? {};
-
 	const dateString = timestamp && formatDate(new Date(Number(timestamp)));
 
 	const cardProps = { usdRateLoading: priceLoading, getUsd: convertGweiToUsd };
 
 	return (
-		<Stack className="GasTracker" gap={2}>
+		<Stack className="GasTracker" gap={1.5}>
 			<div className="GasTracker__status">
-				{gasError || priceError
-					? copy["error"]
-					: gasLoading
-					? copy["loadingDat"]
-					: priceLoading
-					? copy["loadingRate"]
-					: dateString}
+				<div>
+					{gasError || priceError
+						? copy["error"]
+						: gasLoading
+						? copy["loadingDat"]
+						: priceLoading
+						? copy["loadingRate"]
+						: dateString}
+				</div>
+				<button onClick={refresh}>Refresh</button>
 			</div>
 
 			<Stack className="GasTracker__cards" gap={1}>
