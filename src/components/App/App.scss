@@ -1,0 +1,45 @@
+@import "@src/styles/constants.scss";
+
+html,
+body,
+#app {
+	height: 100vh;
+}
+
+body {
+	margin: 0;
+	font-size: var(--app-font-size);
+	font-family: var(--app-font-family);
+	color: var(--color-primary);
+	background: var(--bg-main);
+	line-height: 1.5;
+}
+
+.App {
+	min-height: 100vh;
+	padding-left: 2rem;
+	padding-right: 2rem;
+	align-items: center;
+
+	&__header {
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+
+	&__main {
+		flex: 1;
+	}
+
+	&__footer {
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+
+	&__title {
+		font-size: 1.5rem;
+
+		@media (min-width: $mobile) {
+			font-size: 2rem;
+		}
+	}
+}

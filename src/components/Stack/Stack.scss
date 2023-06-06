@@ -1,0 +1,5 @@
+.Stack {
+	display: flex;
+	flex-direction: column;
+	gap: calc(var(--gap) * 1rem);
+}

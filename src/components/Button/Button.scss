@@ -1,0 +1,23 @@
+.Button {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	padding-left: 0.7rem;
+	padding-right: 0.7rem;
+	border: none;
+	box-shadow: var(--shadow-1);
+	border-radius: 0.25rem;
+	cursor: pointer;
+	font-size: 0.7rem;
+	font-weight: 600;
+	background: var(--bg-card);
+
+	&:hover {
+		box-shadow: var(--shadow-2);
+	}
+
+	&:active {
+		box-shadow: inset var(--shadow-2);
+		background-color: var(--bg-card-dark);
+		transform: scale(0.98);
+	}
+}

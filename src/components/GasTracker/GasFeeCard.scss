@@ -1,0 +1,30 @@
+.GasFeeCard {
+	width: 6rem;
+	padding: 1rem;
+	align-items: center;
+	box-shadow: var(--shadow-1);
+	border-radius: 0.5rem;
+	background: var(--bg-card);
+
+	&__label {
+		font-size: 0.9rem;
+		text-transform: capitalize;
+	}
+
+	&__separator {
+		width: 100%;
+		margin: 0;
+		margin-top: -0.2rem;
+	}
+
+	&__gwei {
+		font-size: 1.6rem;
+		margin-top: 0.1rem;
+	}
+
+	&__usd {
+		color: var(--color-secondary);
+		font-size: 0.8rem;
+		margin-top: 0.2rem;
+	}
+}
